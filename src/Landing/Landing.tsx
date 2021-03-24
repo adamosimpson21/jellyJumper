@@ -94,8 +94,8 @@ export default function Landing(props : Props){
         setContactPermission(false);
     }
 
-    const handleChange = (e: React.FormEvent<HTMLInputElement>) => {
-        const { value, name, checked } = e.currentTarget
+    const handleChange = (event: React.FormEvent<HTMLInputElement>) => {
+        const { value, name, checked } = event.currentTarget
         if(name === "firstName"){
             setUserName(value);
         } else if(name==="email"){
