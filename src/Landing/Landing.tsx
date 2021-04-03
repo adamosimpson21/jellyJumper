@@ -1,20 +1,30 @@
 import React, {useState, useEffect} from 'react';
 import classNames from 'classnames';
 import jelly from '../images/jello.png';
-import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
+import CardMedia from "@material-ui/core/CardMedia";
 import CssBaseline from '@material-ui/core/CssBaseline';
 import TextField from '@material-ui/core/TextField';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Checkbox from '@material-ui/core/Checkbox';
+import Card from '@material-ui/core/Card';
+import CardActionArea from '@material-ui/core/CardActionArea';
+import CardActions from '@material-ui/core/CardActions';
+import CardContent from '@material-ui/core/CardContent';
 import Link from '@material-ui/core/Link';
 import Grid from '@material-ui/core/Grid';
 import Box from '@material-ui/core/Box';
-import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import * as emailjs from 'emailjs-com';
+import twitterLogo from '../images/twitterLogo.png';
+import birdieImage from '../images/birbie.png';
+import bouldieImage from '../images/bouldie.png';
+import levelOneImage from '../images/Level1Demo.png';
+import levelTwoImage from '../images/Level2Demo.png';
+import levelThreeImage from '../images/Level3Demo.png';
+import levelFourImage from '../images/Level4Demo.png';
 import './Landing.scss';
 
 type Props = {
@@ -30,7 +40,6 @@ export default function Landing(props : Props){
     const [ message, setMessage ] = useState('');
     const downloadLink = "https://drive.google.com/file/d/10zBriQlsixEsJfRNy5ohPAOY44HxD9rH/view?usp=sharing";
 
-    // const emailForm = "";
     const Copyright = () => (
         <Typography variant="body2" color="textSecondary" align="center">
             {'Copyright ©BandsWithLegends '}
@@ -57,6 +66,21 @@ export default function Landing(props : Props){
         },
         submit: {
             margin: theme.spacing(3, 0, 2),
+        },
+        media: {
+            height: '28vw',
+        },
+        card: {
+            height: '100%',
+            display: 'flex',
+            flexDirection: 'column',
+        },
+        cardMedia: {
+            paddingTop: '56.25%', // 16:9
+            backgroundSize: 'contain',
+        },
+        cardContent: {
+            flexGrow: 1,
         },
     }));
 
@@ -110,36 +134,138 @@ export default function Landing(props : Props){
 
     return (
         <div className="Landing">
-            <Container maxWidth="md">
-                <CssBaseline />
-                <div className="landing-title">
-                    <div className="landing-title-text">
-                        Jelly
-                    </div>
-                    <img src={jelly} className="App-logo" alt="logo" />
-                    <div className="landing-title-text">
-                        Jumper
-                    </div>
+            {/* nav bar */}
+            <nav className="navbar navbar-expand-lg " id="Home">
+                <a className="navbar-brand" href="#Home">Jelly Jumper</a>
+                <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+                        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span className="navbar-toggler-icon"></span>
+                </button>
+                <div className="collapse navbar-collapse" id="navbarNav">
+                    <ul className="navbar-nav mr-auto">
+                        <li className="nav-item">
+                            <a className="nav-link" href="#Home">Home</a>
+                        </li>
+                        <li className="nav-item">
+                            <a className="nav-link" href="#Carousel">Carousel</a>
+                        </li>
+                        <li className="nav-item">
+                            <a className="nav-link" href="#Download">Download</a>
+                        </li>
+                        <li className="nav-item">
+                            <a className="nav-link" href="#Contact">Contact</a>
+                        </li>
+                        <li className="nav-item">
+                            <a className="nav-link" href="#Download">Available on Windows for FREE!</a>
+                        </li>
+                    </ul>
+                    <a className="navbar-brand" href="https://twitter.com/BandsWithLegend" target="_blank" referrerPolicy="no-referrer">
+                      <img src={twitterLogo} alt="BandsWithLegends' Twitter"  style={{ height: '3vw'}} />
+                    </a>
                 </div>
+            </nav>
 
-                <br />
-                <div className="landing-body">
-                    Jelly Jumper, an exciting new action platformer from BandsWithLegends, is currently in the early stages of development.
+            {/* carousel */}
+            <div className="bd-example" id="About">
+                <div id="carouselExampleCaptions" className="carousel slide" data-ride="carousel">
+                    <ol className="carousel-indicators">
+                        <li data-target="#carouselExampleCaptions" data-slide-to="0" className="active"></li>
+                        <li data-target="#carouselExampleCaptions" data-slide-to="1"></li>
+                        <li data-target="#carouselExampleCaptions" data-slide-to="2"></li>
+                        <li data-target="#carouselExampleCaptions" data-slide-to="3"></li>
+                    </ol>
+                    <div className="carousel-inner">
+                        <div className="carousel-item active">
+                            <img src={levelOneImage} className="d-block w-100" alt="..." />
+                            <div className="carousel-caption d-none d-md-block">
+                                <h2>Jelly Jumper, an exciting new action platformer from BandsWithLegends, is currently in the early stages of development.</h2>
+                            </div>
+                        </div>
+                        <div className="carousel-item">
+                            <img src={levelTwoImage} className="d-block w-100" alt="..." />
+                            <div className="carousel-caption d-none d-md-block">
+                                <h2> Jump, dash, slide, collect, goop, flap, and, most importantly, RUUUNNNNN around epic levels full of obstacles, traps, platforms, and grass!</h2>
+                            </div>
+                        </div>
+                        <div className="carousel-item">
+                            <img src={levelThreeImage} className="d-block w-100" alt="..." />
+                            <div className="carousel-caption d-none d-md-block">
+                                <h2>Includes many secrets and secret levels</h2>
+                            </div>
+                        </div>
+                        <div className="carousel-item">
+                            <img src={levelFourImage} className="d-block w-100" alt="..." />
+                            <div className="carousel-caption d-none d-md-block">
+                                <h2>Download from the link below and start hoppin' around in the dirt today.</h2>
+                            </div>
+                        </div>
+                    </div>
+                    <a className="carousel-control-prev" href="#carouselExampleCaptions" role="button"
+                       data-slide="prev">
+                        <span className="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span className="sr-only">Previous</span>
+                    </a>
+                    <a className="carousel-control-next" href="#carouselExampleCaptions" role="button"
+                       data-slide="next">
+                        <span className="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span className="sr-only">Next</span>
+                    </a>
                 </div>
-                <br/>
-                <div className="landing-body">
-                    Jump, dash, slide, collect, goop, flap, and, most importantly, RUUUNNNNN around epic levels full of obstacles, traps, platforms, and grass!
-                </div>
-                <div className="landing-body">
-                    Download from the link below and start hoppin' around in the dirt today.
-                </div>
-                <br/>
-                <Link href={downloadLink} target="_blank" referrerPolicy="no-referrer">
+            </div>
+            <Container maxWidth="xl" >
+                <Typography component="h1" variant="h1">
+                    Introducing
+                </Typography>
+                <Grid container spacing={4}>
+                    <Grid item key="birbie" xs={12} sm={6} md={4}>
+                        <Card className={classes.card}>
+                            <CardMedia
+                                className={classes.cardMedia}
+                                image={birdieImage}
+                                title="Birbie"
+                            />
+                            <CardContent className={classes.cardContent}>
+                                <Typography gutterBottom variant="h5" component="h2">
+                                    Birbie
+                                </Typography>
+                            </CardContent>
+                        </Card>
+                    </Grid>
+                    <Grid item key="bouldie" xs={12} sm={6} md={4}>
+                        <Card className={classes.card}>
+                            <CardMedia
+                                className={classes.cardMedia}
+                                image={bouldieImage}
+                                title="Bouldie"
+                            />
+                            <CardContent className={classes.cardContent}>
+                                <Typography gutterBottom variant="h5" component="h2">
+                                    Bouldie
+                                </Typography>
+                            </CardContent>
+                        </Card>
+                    </Grid>
+                    <Grid item key="Jello" xs={12} sm={6} md={4}>
+                <Card className={classes.card}>
+                    <CardMedia
+                        className={classes.cardMedia}
+                        image={jelly}
+                        title="Jelly"
+                    />
+                    <CardContent className={classes.cardContent}>
+                        <Typography gutterBottom variant="h5" component="h2">
+                            Jelly
+                        </Typography>
+                    </CardContent>
+                </Card>
+            </Grid>
+                </Grid>
+                <Link href={downloadLink} target="_blank" referrerPolicy="no-referrer" id="Download">
                     <Button
                         type="submit"
-                        fullWidth
                         variant="contained"
                         color="primary"
+                        id="downloadButtonLatest"
                         className={classes.submit}
                     >
                         Latest version of Jelly Jumper
@@ -153,7 +279,7 @@ export default function Landing(props : Props){
                     </div>
                 </Container>
                 :
-            <Container component="main" maxWidth="sm">
+            <Container component="main" maxWidth="sm" id="Contact">
               <CssBaseline/>
               <div className={classNames("email-form", classes.paper)}>
                 <Typography component="h1" variant="h5">
