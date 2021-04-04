@@ -38,7 +38,7 @@ export default function Landing(props : Props){
     const [ submitting, setSubmitting ] = useState(false);
     const [contactPermission, setContactPermission] = useState( false);
     const [ message, setMessage ] = useState('');
-    const downloadLink = "https://drive.google.com/file/d/10zBriQlsixEsJfRNy5ohPAOY44HxD9rH/view?usp=sharing";
+    const downloadLink = "https://drive.google.com/drive/folders/1v_tINxYe6fpJlf7Yio1pr8lfRE1p9Epa?usp=sharing";
 
     const Copyright = () => (
         <Typography variant="body2" color="textSecondary" align="center">
